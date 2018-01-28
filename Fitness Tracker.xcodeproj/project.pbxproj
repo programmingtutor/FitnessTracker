@@ -7,20 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E5220295201E6CC100BA0507 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5220294201E6CC100BA0507 /* SettingsTableViewController.m */; };
 		E564B905201D97C5002B9ABE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E564B904201D97C5002B9ABE /* main.m */; };
 		E564B908201D97C5002B9ABE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E564B907201D97C5002B9ABE /* AppDelegate.m */; };
 		E564B910201D97C5002B9ABE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E564B90F201D97C5002B9ABE /* Assets.xcassets */; };
 		E564B913201D97C5002B9ABE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E564B911201D97C5002B9ABE /* LaunchScreen.storyboard */; };
+		E580DCB7201E7698006A1887 /* fitnesstrackerdb.sql in Resources */ = {isa = PBXBuildFile; fileRef = E580DCB6201E7698006A1887 /* fitnesstrackerdb.sql */; };
 		E58B9BA5201E4B01003639D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E58B9BA4201E4B01003639D4 /* Main.storyboard */; };
 		E594B48F201DA04800EE0528 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E594B48E201DA04800EE0528 /* libsqlite3.tbd */; };
 		E594B492201DA0C200EE0528 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E594B491201DA0C200EE0528 /* LoginViewController.m */; };
 		E594B495201DA1DB00EE0528 /* FitnessTrackerDB.m in Sources */ = {isa = PBXBuildFile; fileRef = E594B494201DA1DB00EE0528 /* FitnessTrackerDB.m */; };
-		E594B499201DBCA500EE0528 /* fitnesstrackerdb.sql in Resources */ = {isa = PBXBuildFile; fileRef = E594B498201DBCA500EE0528 /* fitnesstrackerdb.sql */; };
 		E594B49C201DCB7D00EE0528 /* PasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E594B49B201DCB7D00EE0528 /* PasswordViewController.m */; };
 		E594B49F201DE0C700EE0528 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E594B49E201DE0C700EE0528 /* RegisterViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E5220293201E6CC100BA0507 /* SettingsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
+		E5220294201E6CC100BA0507 /* SettingsTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
 		E564B900201D97C5002B9ABE /* Fitness Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fitness Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E564B904201D97C5002B9ABE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E564B906201D97C5002B9ABE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -28,13 +31,13 @@
 		E564B90F201D97C5002B9ABE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E564B912201D97C5002B9ABE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E564B914201D97C5002B9ABE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E580DCB6201E7698006A1887 /* fitnesstrackerdb.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = fitnesstrackerdb.sql; sourceTree = "<group>"; };
 		E58B9BA4201E4B01003639D4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E594B48E201DA04800EE0528 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		E594B490201DA0C200EE0528 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		E594B491201DA0C200EE0528 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		E594B493201DA1DB00EE0528 /* FitnessTrackerDB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FitnessTrackerDB.h; sourceTree = "<group>"; };
 		E594B494201DA1DB00EE0528 /* FitnessTrackerDB.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FitnessTrackerDB.m; sourceTree = "<group>"; };
-		E594B498201DBCA500EE0528 /* fitnesstrackerdb.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = fitnesstrackerdb.sql; sourceTree = "<group>"; };
 		E594B49A201DCB7D00EE0528 /* PasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PasswordViewController.h; sourceTree = "<group>"; };
 		E594B49B201DCB7D00EE0528 /* PasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PasswordViewController.m; sourceTree = "<group>"; };
 		E594B49D201DE0C700EE0528 /* RegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
@@ -73,7 +76,9 @@
 		E564B902201D97C5002B9ABE /* Fitness Tracker */ = {
 			isa = PBXGroup;
 			children = (
-				E594B498201DBCA500EE0528 /* fitnesstrackerdb.sql */,
+				E580DCB6201E7698006A1887 /* fitnesstrackerdb.sql */,
+				E5220293201E6CC100BA0507 /* SettingsTableViewController.h */,
+				E5220294201E6CC100BA0507 /* SettingsTableViewController.m */,
 				E594B49A201DCB7D00EE0528 /* PasswordViewController.h */,
 				E594B49B201DCB7D00EE0528 /* PasswordViewController.m */,
 				E594B49D201DE0C700EE0528 /* RegisterViewController.h */,
@@ -168,7 +173,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E594B499201DBCA500EE0528 /* fitnesstrackerdb.sql in Resources */,
+				E580DCB7201E7698006A1887 /* fitnesstrackerdb.sql in Resources */,
 				E564B913201D97C5002B9ABE /* LaunchScreen.storyboard in Resources */,
 				E564B910201D97C5002B9ABE /* Assets.xcassets in Resources */,
 				E58B9BA5201E4B01003639D4 /* Main.storyboard in Resources */,
@@ -182,6 +187,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5220295201E6CC100BA0507 /* SettingsTableViewController.m in Sources */,
 				E564B908201D97C5002B9ABE /* AppDelegate.m in Sources */,
 				E594B49F201DE0C700EE0528 /* RegisterViewController.m in Sources */,
 				E564B905201D97C5002B9ABE /* main.m in Sources */,

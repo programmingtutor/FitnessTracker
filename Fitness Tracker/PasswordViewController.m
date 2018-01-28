@@ -1,12 +1,15 @@
 #import "PasswordViewController.h"
 #import <LocalAuthentication/LocalAuthentication.h>
 #import "FitnessTrackerDB.h"
+#import "SettingsTableViewController.h"
 
 @interface PasswordViewController ()
 
 -(void)authenticateUsingTouchID;
 @property (nonatomic, strong) FitnessTrackerDB *dbManager;
 @property (nonatomic, strong) NSArray *arrUserInfo;
+-(void)presentMainMenu;
+-(void)showOverlayOnTask;
 //-(void)reportTouchIDError: (NSError *)error;
 
 @end
@@ -40,6 +43,19 @@
 	}];
 }
 
+-(void) showOverlayOnTask {
+	
+	UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"Logging in..." preferredStyle: UIAlertControllerStyleAlert];
+	
+	UIActivityIndicatorView *loadingIndicator = [[UIActivityIndicatorView alloc]initWithFrame: CGRectMake(10, 5, 50, 50)];
+	
+	loadingIndicator.hidesWhenStopped = YES;
+	loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+	[loadingIndicator startAnimating];
+	[alert.view addSubview:loadingIndicator];
+	[self presentViewController:alert animated:YES completion:nil];
+}
+
 -(void)authenticateUsingTouchID {
 	
 	LAContext *authContext = [[LAContext alloc] init];
@@ -58,6 +74,9 @@
 				dispatch_async(dispatch_get_main_queue(), ^{
 					
 					//Go to main menu
+					//Shows logging in overlay before moving to main menu
+					[self showOverlayOnTask];
+					[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(presentMainMenu) userInfo:nil repeats:NO];
 				});
 			}
 			else {
@@ -151,6 +170,8 @@
 }
 - (IBAction)btnLogin:(id)sender {
 	
+	[self.view endEditing:YES];
+	
 	self.dbManager = [[FitnessTrackerDB alloc] initWithDatabaseFilename:@"fitnesstrackerdb.sql"];
 	
 	NSString *query = [NSString stringWithFormat:@"SELECT * FROM UserInfo WHERE username = '%@' AND password = '%@'", self.username, self.txtPassword.text];
@@ -163,10 +184,19 @@
 	
 	if ([self.arrUserInfo count] != 0) {
 		
-		NSLog(@"success");
-		//Move to main menu
+		[self showOverlayOnTask];
+		[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(presentMainMenu) userInfo:nil repeats:NO];
 	}
 	else {
+		
+		[self showOverlayOnTask];
+		[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(showLoginFailed) userInfo:nil repeats:NO];
+	}
+}
+
+-(void)showLoginFailed {
+	
+	[self dismissViewControllerAnimated:YES completion:^{
 		
 		UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Incorrect password"
 																	   message:@"Password is incorrect. Please try again."
@@ -177,6 +207,16 @@
 		
 		[alert addAction:defaultAction];
 		[self presentViewController:alert animated:YES completion:nil];
-	}
+	}];
+}
+
+-(void)presentMainMenu {
+	
+	[self dismissViewControllerAnimated:YES completion:^{
+		
+		UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+		SettingsTableViewController *settingsVC = [storyboard instantiateViewControllerWithIdentifier:@"mainMenu"];
+		[self presentViewController:settingsVC animated:YES completion:nil];
+	}];
 }
 @end
