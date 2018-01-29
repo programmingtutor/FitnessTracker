@@ -2,6 +2,7 @@
 #import "FitnessTrackerDB.h"
 #import "LoginViewController.h"
 #import "ChangePasswordViewController.h"
+#import "UserDetailsViewController.h"
 
 
 @interface SettingsTableViewController ()
@@ -111,6 +112,11 @@
 		
 		[self deleteAccountPrompt];
 	}
+	//Update User Details
+	else if (indexPath.row == 0 && indexPath.section == 0) {
+		
+		[self performSegueWithIdentifier:@"updateUserDetails" sender:self];
+	}
 	
 	
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -171,6 +177,11 @@
 	if ([[segue identifier]  isEqual: @"changePassword"]) {
 		
 		ChangePasswordViewController *vc = (ChangePasswordViewController *)[segue destinationViewController];
+		vc.username = self.username;
+	}
+	else if ([[segue identifier]  isEqual: @"updateUserDetails"]) {
+		
+		UserDetailsViewController *vc = (UserDetailsViewController *)[segue destinationViewController];
 		vc.username = self.username;
 	}
 }

@@ -21,6 +21,7 @@
 		E594B49F201DE0C700EE0528 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E594B49E201DE0C700EE0528 /* RegisterViewController.m */; };
 		E5D7295F201EEB04006AA520 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D7295E201EEB04006AA520 /* MainMenuViewController.m */; };
 		E5D7296E201F258D006AA520 /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D7296D201F258D006AA520 /* ChangePasswordViewController.m */; };
+		E5D72971201F350D006AA520 /* UserDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D72970201F350D006AA520 /* UserDetailsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,8 @@
 		E5D7295E201EEB04006AA520 /* MainMenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
 		E5D7296C201F258D006AA520 /* ChangePasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangePasswordViewController.h; sourceTree = "<group>"; };
 		E5D7296D201F258D006AA520 /* ChangePasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordViewController.m; sourceTree = "<group>"; };
+		E5D7296F201F350D006AA520 /* UserDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserDetailsViewController.h; sourceTree = "<group>"; };
+		E5D72970201F350D006AA520 /* UserDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserDetailsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +86,8 @@
 			isa = PBXGroup;
 			children = (
 				E580DCB6201E7698006A1887 /* fitnesstrackerdb.sql */,
+				E5D7296F201F350D006AA520 /* UserDetailsViewController.h */,
+				E5D72970201F350D006AA520 /* UserDetailsViewController.m */,
 				E5D7296C201F258D006AA520 /* ChangePasswordViewController.h */,
 				E5D7296D201F258D006AA520 /* ChangePasswordViewController.m */,
 				E5D7295D201EEB04006AA520 /* MainMenuViewController.h */,
@@ -205,6 +210,7 @@
 				E594B492201DA0C200EE0528 /* LoginViewController.m in Sources */,
 				E594B495201DA1DB00EE0528 /* FitnessTrackerDB.m in Sources */,
 				E5D7296E201F258D006AA520 /* ChangePasswordViewController.m in Sources */,
+				E5D72971201F350D006AA520 /* UserDetailsViewController.m in Sources */,
 				E594B49C201DCB7D00EE0528 /* PasswordViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
