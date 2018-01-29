@@ -1,5 +1,6 @@
 #import "MainMenuViewController.h"
 #import "SettingsTableViewController.h"
+#import "PushUpTrackerViewController.h"
 
 @interface MainMenuViewController ()
 
@@ -35,4 +36,13 @@
 }
 
 
+- (IBAction)btnPushUpTracker:(id)sender {
+	
+	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PushUpTracker" bundle:nil];
+	UINavigationController *navigationController = [storyboard instantiateViewControllerWithIdentifier:@"pushUpTracker"];
+	PushUpTrackerViewController *vc = navigationController.viewControllers[0];
+	vc.username = self.username;
+	navigationController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+	[self presentViewController:navigationController animated:YES completion:nil];
+}
 @end
