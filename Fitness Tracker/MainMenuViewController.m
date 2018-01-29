@@ -5,6 +5,7 @@
 #import "SitUpTrackerViewController.h"
 #import "BMICalculatorViewController.h"
 #import "LocateAGymViewController.h"
+#import "RunningTrackerViewController.h"
 
 @interface MainMenuViewController ()
 
@@ -78,6 +79,16 @@
 	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"LocateAGym" bundle:nil];
 	UINavigationController *navigationController = [storyboard instantiateViewControllerWithIdentifier:@"locateAGym"];
 	LocateAGymViewController *vc = navigationController.viewControllers[0];
+	vc.username = self.username;
+	navigationController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+	[self presentViewController:navigationController animated:YES completion:nil];
+}
+
+- (IBAction)btnRunningTracker:(id)sender {
+	
+	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"RunningTracker" bundle:nil];
+	UINavigationController *navigationController = [storyboard instantiateViewControllerWithIdentifier:@"runningTracker"];
+	RunningTrackerViewController *vc = navigationController.viewControllers[0];
 	vc.username = self.username;
 	navigationController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
 	[self presentViewController:navigationController animated:YES completion:nil];

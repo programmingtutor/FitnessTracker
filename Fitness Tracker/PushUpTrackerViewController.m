@@ -10,7 +10,6 @@
 }
 
 @property (nonatomic, strong) FitnessTrackerDB *dbManager;
-@property (nonatomic, strong) NSArray *arrUserInfo;
 
 @end
 
@@ -149,7 +148,7 @@
 		NSLog(@"Query was executed successfully. Affected rows = %d", self.dbManager.affectedRows);
 		
 		UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Workout Finished"
-																	   message:[NSString stringWithFormat:@"Score: %d\nWorkout has been saved to history.", pushUpCount]
+																	   message:[NSString stringWithFormat:@"Result: %d\nWorkout has been saved to history.", pushUpCount]
 																preferredStyle:UIAlertControllerStyleAlert];
 		
 		UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Return to Main Menu" style:UIAlertActionStyleDefault

@@ -334,6 +334,9 @@
                                 <state key="normal" title="2.4KM Tracker">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="btnRunningTracker:" destination="Uit-0M-YeB" eventType="touchUpInside" id="XDM-Ls-CfE"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="naF-Ea-AJV">
                                 <rect key="frame" x="110" y="483" width="155" height="54"/>
