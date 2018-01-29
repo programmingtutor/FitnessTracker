@@ -27,6 +27,7 @@
 		self.arrUserInfo = nil;
 	}
 	self.arrUserInfo = [[NSArray alloc] initWithArray:[self.dbManager loadDataFromDB:query]];
+	self.arrUserInfo = self.arrUserInfo.reverseObjectEnumerator.allObjects;
 	
 	[self.tableView reloadData];
 }
