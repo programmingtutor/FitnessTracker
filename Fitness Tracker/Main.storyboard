@@ -328,6 +328,9 @@
                                 <state key="normal" title="Sit-Up Tracker">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="btnSitUpTracker:" destination="Uit-0M-YeB" eventType="touchUpInside" id="9X4-yX-Vab"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="LOk-PY-LU3">
                                 <rect key="frame" x="119" y="223" width="132" height="60"/>

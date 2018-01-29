@@ -2,6 +2,7 @@
 #import "SettingsTableViewController.h"
 #import "PushUpTrackerViewController.h"
 #import "WorkoutHistoryTableViewController.h"
+#import "SitUpTrackerViewController.h"
 
 @interface MainMenuViewController ()
 
@@ -46,6 +47,15 @@
 	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"PushUpTracker" bundle:nil];
 	UINavigationController *navigationController = [storyboard instantiateViewControllerWithIdentifier:@"pushUpTracker"];
 	PushUpTrackerViewController *vc = navigationController.viewControllers[0];
+	vc.username = self.username;
+	navigationController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+	[self presentViewController:navigationController animated:YES completion:nil];
+}
+- (IBAction)btnSitUpTracker:(id)sender {
+	
+	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"SitUpTracker" bundle:nil];
+	UINavigationController *navigationController = [storyboard instantiateViewControllerWithIdentifier:@"sitUpTracker"];
+	SitUpTrackerViewController *vc = navigationController.viewControllers[0];
 	vc.username = self.username;
 	navigationController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
 	[self presentViewController:navigationController animated:YES completion:nil];

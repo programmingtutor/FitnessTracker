@@ -115,10 +115,6 @@
 
 - (IBAction)btnStart:(id)sender {
 	
-	//Create timer object
-	//set tick interval to 1.0
-	//set selector to the method that should be executed on the interval
-	//set repeat to yes meaning it should run continiously, not just once
 	
 	[UIView animateWithDuration:0.7 animations:^{
 		

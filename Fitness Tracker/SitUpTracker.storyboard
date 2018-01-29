@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="96W-hk-guu">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,17 +9,69 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Sit-Up Tracker-->
         <scene sceneID="gJ7-2h-B8w">
             <objects>
-                <viewController id="wly-ig-Nx9" sceneMemberID="viewController">
+                <viewController id="wly-ig-Nx9" customClass="SitUpTrackerViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Pn3-Ma-CqY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jnz-YT-oah">
+                                <rect key="frame" x="0.0" y="300" width="375" height="150"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="50"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z3Y-gJ-mr6">
+                                <rect key="frame" x="109" y="313" width="157" height="62"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Start">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnStart:" destination="wly-ig-Nx9" eventType="touchUpInside" id="36O-6y-kMD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dHL-ej-TZj">
+                                <rect key="frame" x="69" y="567" width="236" height="62"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="End Workout">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnEndWorkout:" destination="wly-ig-Nx9" eventType="touchUpInside" id="LHM-B5-PGz"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Timer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="suJ-Ua-oTT">
+                                <rect key="frame" x="0.0" y="125" width="375" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="raW-69-Pab"/>
                     </view>
-                    <navigationItem key="navigationItem" id="OEV-jl-nQw"/>
+                    <navigationItem key="navigationItem" title="Sit-Up Tracker" id="OEV-jl-nQw">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="pWI-JZ-06j">
+                            <connections>
+                                <action selector="btnBack:" destination="wly-ig-Nx9" id="b0O-IH-1RM"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="btnEndWorkoutOutlet" destination="dHL-ej-TZj" id="Xga-G5-NFP"/>
+                        <outlet property="btnStartOutlet" destination="Z3Y-gJ-mr6" id="4yt-sP-IW8"/>
+                        <outlet property="lblCount" destination="jnz-YT-oah" id="se6-Dc-Pfn"/>
+                        <outlet property="lblTimer" destination="suJ-Ua-oTT" id="SQW-vJ-rAM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sTb-cP-t0E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -28,7 +80,7 @@
         <!--Navigation Controller-->
         <scene sceneID="wIx-qY-3Lt">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="96W-hk-guu" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="sitUpTracker" automaticallyAdjustsScrollViewInsets="NO" id="96W-hk-guu" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fxr-0m-5tb">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -41,7 +93,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xcd-Uv-HfC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-300.80000000000001" y="139.43028485757122"/>
+            <point key="canvasLocation" x="-708" y="140"/>
         </scene>
     </scenes>
 </document>
