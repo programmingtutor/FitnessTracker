@@ -175,6 +175,27 @@
 			name = "Login Page";
 			sourceTree = "<group>";
 		};
+		E5171C00201FA2860062917E /* Workout History */ = {
+			isa = PBXGroup;
+			children = (
+				E5D7298D201F717F006AA520 /* WorkoutHistoryTableViewCell.h */,
+				E5D7298E201F717F006AA520 /* WorkoutHistoryTableViewCell.m */,
+				E5D7298A201F716D006AA520 /* WorkoutHistoryTableViewController.h */,
+				E5D7298B201F716D006AA520 /* WorkoutHistoryTableViewController.m */,
+			);
+			name = "Workout History";
+			sourceTree = "<group>";
+		};
+		E5171C01201FA29D0062917E /* Fitness Tracker Database */ = {
+			isa = PBXGroup;
+			children = (
+				E594B493201DA1DB00EE0528 /* FitnessTrackerDB.h */,
+				E594B494201DA1DB00EE0528 /* FitnessTrackerDB.m */,
+				E5171BE4201F78690062917E /* fitnesstrackerdb.sql */,
+			);
+			name = "Fitness Tracker Database";
+			sourceTree = "<group>";
+		};
 		E564B8F7201D97C5002B9ABE = {
 			isa = PBXGroup;
 			children = (
@@ -195,29 +216,24 @@
 		E564B902201D97C5002B9ABE /* Fitness Tracker */ = {
 			isa = PBXGroup;
 			children = (
+				E5171C01201FA29D0062917E /* Fitness Tracker Database */,
+				E5171C00201FA2860062917E /* Workout History */,
 				E5171BFF201FA2340062917E /* Login Page */,
 				E5171BFE201FA22A0062917E /* Settings */,
 				E5171BFD201FA21F0062917E /* Main Menu */,
 				E5171BFC201FA2110062917E /* Change Password */,
 				E5171BFB201FA1FA0062917E /* Change User Details */,
-				E5171BE4201F78690062917E /* fitnesstrackerdb.sql */,
 				E5171BEF201F97780062917E /* Locate A Gym */,
 				E5171BE6201F90BC0062917E /* BMI Calculator */,
 				E5D72984201F6E16006AA520 /* Sit-Up Tracker */,
 				E5D72983201F5D28006AA520 /* Push-Up Tracker */,
 				E564B906201D97C5002B9ABE /* AppDelegate.h */,
 				E564B907201D97C5002B9ABE /* AppDelegate.m */,
-				E5D7298D201F717F006AA520 /* WorkoutHistoryTableViewCell.h */,
-				E5D7298E201F717F006AA520 /* WorkoutHistoryTableViewCell.m */,
-				E5D7298A201F716D006AA520 /* WorkoutHistoryTableViewController.h */,
-				E5D7298B201F716D006AA520 /* WorkoutHistoryTableViewController.m */,
 				E58B9BA4201E4B01003639D4 /* Main.storyboard */,
 				E564B90F201D97C5002B9ABE /* Assets.xcassets */,
 				E564B911201D97C5002B9ABE /* LaunchScreen.storyboard */,
 				E564B914201D97C5002B9ABE /* Info.plist */,
 				E564B903201D97C5002B9ABE /* Supporting Files */,
-				E594B493201DA1DB00EE0528 /* FitnessTrackerDB.h */,
-				E594B494201DA1DB00EE0528 /* FitnessTrackerDB.m */,
 			);
 			path = "Fitness Tracker";
 			sourceTree = "<group>";
