@@ -126,6 +126,55 @@
 			name = "Locate A Gym";
 			sourceTree = "<group>";
 		};
+		E5171BFB201FA1FA0062917E /* Change User Details */ = {
+			isa = PBXGroup;
+			children = (
+				E5D7296F201F350D006AA520 /* UserDetailsViewController.h */,
+				E5D72970201F350D006AA520 /* UserDetailsViewController.m */,
+			);
+			name = "Change User Details";
+			sourceTree = "<group>";
+		};
+		E5171BFC201FA2110062917E /* Change Password */ = {
+			isa = PBXGroup;
+			children = (
+				E5D7296C201F258D006AA520 /* ChangePasswordViewController.h */,
+				E5D7296D201F258D006AA520 /* ChangePasswordViewController.m */,
+			);
+			name = "Change Password";
+			sourceTree = "<group>";
+		};
+		E5171BFD201FA21F0062917E /* Main Menu */ = {
+			isa = PBXGroup;
+			children = (
+				E5D7295D201EEB04006AA520 /* MainMenuViewController.h */,
+				E5D7295E201EEB04006AA520 /* MainMenuViewController.m */,
+			);
+			name = "Main Menu";
+			sourceTree = "<group>";
+		};
+		E5171BFE201FA22A0062917E /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				E5220293201E6CC100BA0507 /* SettingsTableViewController.h */,
+				E5220294201E6CC100BA0507 /* SettingsTableViewController.m */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		E5171BFF201FA2340062917E /* Login Page */ = {
+			isa = PBXGroup;
+			children = (
+				E594B49A201DCB7D00EE0528 /* PasswordViewController.h */,
+				E594B49B201DCB7D00EE0528 /* PasswordViewController.m */,
+				E594B49D201DE0C700EE0528 /* RegisterViewController.h */,
+				E594B49E201DE0C700EE0528 /* RegisterViewController.m */,
+				E594B490201DA0C200EE0528 /* LoginViewController.h */,
+				E594B491201DA0C200EE0528 /* LoginViewController.m */,
+			);
+			name = "Login Page";
+			sourceTree = "<group>";
+		};
 		E564B8F7201D97C5002B9ABE = {
 			isa = PBXGroup;
 			children = (
@@ -146,27 +195,18 @@
 		E564B902201D97C5002B9ABE /* Fitness Tracker */ = {
 			isa = PBXGroup;
 			children = (
+				E5171BFF201FA2340062917E /* Login Page */,
+				E5171BFE201FA22A0062917E /* Settings */,
+				E5171BFD201FA21F0062917E /* Main Menu */,
+				E5171BFC201FA2110062917E /* Change Password */,
+				E5171BFB201FA1FA0062917E /* Change User Details */,
 				E5171BE4201F78690062917E /* fitnesstrackerdb.sql */,
 				E5171BEF201F97780062917E /* Locate A Gym */,
 				E5171BE6201F90BC0062917E /* BMI Calculator */,
 				E5D72984201F6E16006AA520 /* Sit-Up Tracker */,
 				E5D72983201F5D28006AA520 /* Push-Up Tracker */,
-				E5D7296F201F350D006AA520 /* UserDetailsViewController.h */,
-				E5D72970201F350D006AA520 /* UserDetailsViewController.m */,
-				E5D7296C201F258D006AA520 /* ChangePasswordViewController.h */,
-				E5D7296D201F258D006AA520 /* ChangePasswordViewController.m */,
-				E5D7295D201EEB04006AA520 /* MainMenuViewController.h */,
-				E5D7295E201EEB04006AA520 /* MainMenuViewController.m */,
-				E5220293201E6CC100BA0507 /* SettingsTableViewController.h */,
-				E5220294201E6CC100BA0507 /* SettingsTableViewController.m */,
-				E594B49A201DCB7D00EE0528 /* PasswordViewController.h */,
-				E594B49B201DCB7D00EE0528 /* PasswordViewController.m */,
-				E594B49D201DE0C700EE0528 /* RegisterViewController.h */,
-				E594B49E201DE0C700EE0528 /* RegisterViewController.m */,
 				E564B906201D97C5002B9ABE /* AppDelegate.h */,
 				E564B907201D97C5002B9ABE /* AppDelegate.m */,
-				E594B490201DA0C200EE0528 /* LoginViewController.h */,
-				E594B491201DA0C200EE0528 /* LoginViewController.m */,
 				E5D7298D201F717F006AA520 /* WorkoutHistoryTableViewCell.h */,
 				E5D7298E201F717F006AA520 /* WorkoutHistoryTableViewCell.m */,
 				E5D7298A201F716D006AA520 /* WorkoutHistoryTableViewController.h */,
