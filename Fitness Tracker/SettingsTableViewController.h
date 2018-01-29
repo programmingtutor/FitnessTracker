@@ -1,13 +1,12 @@
-//
-//  SettingsTableViewController.h
-//  Fitness Tracker
-//
-//  Created by Hongxuan on 29/1/18.
-//  Copyright © 2018 ITE. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 
 @interface SettingsTableViewController : UITableViewController
+@property(nonatomic, copy) NSString *username;
+-(void)setTouchIDStateOn;
+-(void)setTouchIDStateOff;
+-(void)enableTouchID;
+-(void)disableTouchID;
+
+//@property (weak, nonatomic) IBOutlet UISwitch *touchIDOutlet;
 
 @end

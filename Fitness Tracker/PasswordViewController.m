@@ -1,7 +1,7 @@
 #import "PasswordViewController.h"
 #import <LocalAuthentication/LocalAuthentication.h>
 #import "FitnessTrackerDB.h"
-#import "SettingsTableViewController.h"
+#import "MainMenuViewController.h"
 
 @interface PasswordViewController ()
 
@@ -24,6 +24,7 @@
 	[self.view addGestureRecognizer:tap];
 	
 	self.lblUsername.text = self.username;
+	
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,6 +42,28 @@
 		self.lblWelcome.alpha = 1.0;
 		self.lblUsername.alpha = 1.0;
 	}];
+	
+	self.dbManager = [[FitnessTrackerDB alloc] initWithDatabaseFilename:@"fitnesstrackerdb.sql"];
+	
+	NSString *query = [NSString stringWithFormat:@"SELECT * FROM UserInfo WHERE username = '%@'", self.username];
+	
+	// Get the results.
+	if (self.arrUserInfo != nil) {
+		self.arrUserInfo = nil;
+	}
+	self.arrUserInfo = [[NSArray alloc] initWithArray:[self.dbManager loadDataFromDB:query]];
+	
+	if ([self.arrUserInfo count] != 0) {
+		
+		NSArray *selectedUser = [self.arrUserInfo objectAtIndex:0];
+		
+		NSInteger index = [self.dbManager.arrColumnNames indexOfObject:@"useTouchID"];
+		
+		if ([[selectedUser objectAtIndex:index]  isEqual: @"1"]) {
+			
+			[self authenticateUsingTouchID];
+		}
+	}
 }
 
 -(void) showOverlayOnTask {
@@ -69,7 +92,6 @@
 			if (success) {
 				
 				//Authentication is successful
-				NSLog(@"success");
 				
 				dispatch_async(dispatch_get_main_queue(), ^{
 					
@@ -135,7 +157,7 @@
 	
 	self.dbManager = [[FitnessTrackerDB alloc] initWithDatabaseFilename:@"fitnesstrackerdb.sql"];
 	
-	NSString *query = [NSString stringWithFormat:@"SELECT useTouchID FROM UserInfo WHERE username = '%@'", self.username];
+	NSString *query = [NSString stringWithFormat:@"SELECT * FROM UserInfo WHERE username = '%@'", self.username];
 	
 	// Get the results.
 	if (self.arrUserInfo != nil) {
@@ -149,9 +171,8 @@
 		
 		NSInteger index = [self.dbManager.arrColumnNames indexOfObject:@"useTouchID"];
 		
-		if ((NSInteger)[selectedUser objectAtIndex:index] == 1) {
+		if ([[selectedUser objectAtIndex:index]  isEqual: @"1"]) {
 			
-			//Check if user has enabled use Touch ID function
 			[self authenticateUsingTouchID];
 		}
 		else {
@@ -168,29 +189,44 @@
 		}
 	}
 }
+
 - (IBAction)btnLogin:(id)sender {
 	
 	[self.view endEditing:YES];
 	
-	self.dbManager = [[FitnessTrackerDB alloc] initWithDatabaseFilename:@"fitnesstrackerdb.sql"];
-	
-	NSString *query = [NSString stringWithFormat:@"SELECT * FROM UserInfo WHERE username = '%@' AND password = '%@'", self.username, self.txtPassword.text];
-	
-	// Get the results.
-	if (self.arrUserInfo != nil) {
-		self.arrUserInfo = nil;
-	}
-	self.arrUserInfo = [[NSArray alloc] initWithArray:[self.dbManager loadDataFromDB:query]];
-	
-	if ([self.arrUserInfo count] != 0) {
+	if ([self.txtPassword.text length] == 0) {
 		
-		[self showOverlayOnTask];
-		[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(presentMainMenu) userInfo:nil repeats:NO];
+		UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Please enter password"
+																	   message:@"There is no password entered in the field."
+																preferredStyle:UIAlertControllerStyleAlert];
+		
+		UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+															  handler:^(UIAlertAction * action) {}];
+		
+		[alert addAction:defaultAction];
+		[self presentViewController:alert animated:YES completion:nil];
 	}
 	else {
+		self.dbManager = [[FitnessTrackerDB alloc] initWithDatabaseFilename:@"fitnesstrackerdb.sql"];
 		
-		[self showOverlayOnTask];
-		[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(showLoginFailed) userInfo:nil repeats:NO];
+		NSString *query = [NSString stringWithFormat:@"SELECT * FROM UserInfo WHERE username = '%@' AND password = '%@'", self.username, self.txtPassword.text];
+		
+		// Get the results.
+		if (self.arrUserInfo != nil) {
+			self.arrUserInfo = nil;
+		}
+		self.arrUserInfo = [[NSArray alloc] initWithArray:[self.dbManager loadDataFromDB:query]];
+		
+		if ([self.arrUserInfo count] != 0) {
+			
+			[self showOverlayOnTask];
+			[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(presentMainMenu) userInfo:nil repeats:NO];
+		}
+		else {
+			
+			[self showOverlayOnTask];
+			[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(showLoginFailed) userInfo:nil repeats:NO];
+		}
 	}
 }
 
@@ -215,8 +251,10 @@
 	[self dismissViewControllerAnimated:YES completion:^{
 		
 		UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-		SettingsTableViewController *settingsVC = [storyboard instantiateViewControllerWithIdentifier:@"mainMenu"];
-		[self presentViewController:settingsVC animated:YES completion:nil];
+		UINavigationController *navigationController = [storyboard instantiateViewControllerWithIdentifier:@"mainMenu"];
+		MainMenuViewController *mainVC = navigationController.viewControllers[0];
+		mainVC.username = self.username;
+		[self presentViewController:navigationController animated:YES completion:nil];
 	}];
 }
 @end

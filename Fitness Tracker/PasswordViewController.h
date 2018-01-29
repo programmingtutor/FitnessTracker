@@ -2,7 +2,7 @@
 
 @interface PasswordViewController : UIViewController <UITextFieldDelegate>
 - (IBAction)useTouchIDBtn:(UIButton *)sender;
-@property (nonatomic, strong) NSString *username;
+@property (nonatomic, copy) NSString *username;
 @property (weak, nonatomic) IBOutlet UITextField *txtPassword;
 - (IBAction)btnLogin:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *lblUsername;

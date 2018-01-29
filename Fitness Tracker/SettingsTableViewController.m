@@ -1,14 +1,13 @@
-//
-//  SettingsTableViewController.m
-//  Fitness Tracker
-//
-//  Created by Hongxuan on 29/1/18.
-//  Copyright © 2018 ITE. All rights reserved.
-//
-
 #import "SettingsTableViewController.h"
+#import "FitnessTrackerDB.h"
+#import "LoginViewController.h"
+
 
 @interface SettingsTableViewController ()
+
+@property (nonatomic, strong) FitnessTrackerDB *dbManager;
+@property (nonatomic, strong) NSArray *arrUserInfo;
+-(void)showLoginFailed;
 
 @end
 
@@ -16,12 +15,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+		
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+	
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,6 +41,7 @@
 		return 1;
 	}
 	else if (section == 1) {
+
 		return 3;
 	}
 	else if (section == 2) {
@@ -50,15 +51,68 @@
 	return 0;
 }
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	
+	
+	//Use Touch ID for Login
+	if (indexPath.row == 0 && indexPath.section == 1) {
+		
+		self.dbManager = [[FitnessTrackerDB alloc] initWithDatabaseFilename:@"fitnesstrackerdb.sql"];
+		
+		NSString *query = [NSString stringWithFormat:@"SELECT * FROM UserInfo WHERE username = '%@'", self.username];
+		
+		// Get the results.
+		if (self.arrUserInfo != nil) {
+			self.arrUserInfo = nil;
+		}
+		self.arrUserInfo = [[NSArray alloc] initWithArray:[self.dbManager loadDataFromDB:query]];
+		
+		if ([self.arrUserInfo count] != 0) {
+			
+			NSArray *selectedUser = [self.arrUserInfo objectAtIndex:0];
+			
+			NSInteger index = [self.dbManager.arrColumnNames indexOfObject:@"useTouchID"];
+			
+			if ([[selectedUser objectAtIndex:index]  isEqual: @"1"]) {
+				
+				[self setTouchIDStateOff];
+			}
+			else {
+				
+				[self setTouchIDStateOn];
+			}
+		}
+	}
+	//Log Out
+	else if (indexPath.row == 1 && indexPath.section == 2){
+		
+		UIAlertController *controller = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+		[controller addAction:[UIAlertAction actionWithTitle:@"Log Out" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+			//Go back to login screen
+			
+			UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+			LoginViewController *loginVC = [storyboard instantiateViewControllerWithIdentifier:@"loginMenu"];
+			[self presentViewController:loginVC animated:YES completion:nil];
+		}]];
+		
+		[controller addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+		
+		[self presentViewController:controller animated:YES completion:nil];
+	}
+	
+	
+	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+	
 }
-*/
+
+/*- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	
+    // Configure the cell...
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"touchIDIdentifier" forIndexPath:indexPath];
+
+	return cell;
+}*/
+
 
 /*
 // Override to support conditional editing of the table view.
@@ -104,4 +158,156 @@
 }
 */
 
+-(void)setTouchIDStateOff {
+	
+	[self showOverlayOnTask];
+	[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(disableTouchID) userInfo:nil repeats:NO];
+}
+
+- (void)setTouchIDStateOn {
+	
+	UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Enter Password" message:@"Please enter your password to enable Use Touch ID" preferredStyle:UIAlertControllerStyleAlert];
+	
+	[alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+		textField.placeholder = @"Password";
+		textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+		textField.secureTextEntry = YES;
+	}];
+	
+	[alert addAction:[UIAlertAction actionWithTitle:@"Done" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+		NSArray * textfields = alert.textFields;
+		UITextField *password = textfields[0];
+		
+		self.dbManager = [[FitnessTrackerDB alloc] initWithDatabaseFilename:@"fitnesstrackerdb.sql"];
+		
+		NSString *query = [NSString stringWithFormat:@"SELECT * FROM UserInfo WHERE username = '%@' AND password = '%@'", self.username, password.text];
+		
+		// Get the results.
+		if (self.arrUserInfo != nil) {
+			self.arrUserInfo = nil;
+		}
+		self.arrUserInfo = [[NSArray alloc] initWithArray:[self.dbManager loadDataFromDB:query]];
+		
+		if ([self.arrUserInfo count] != 0) {
+			
+			[self showOverlayOnTask];
+			[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(enableTouchID) userInfo:nil repeats:NO];
+		}
+		else {
+			
+			[self showOverlayOnTask];
+			[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(showLoginFailed) userInfo:nil repeats:NO];
+		}
+		
+	}]];
+	
+	[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+		
+	}]];
+	
+	[self presentViewController:alert animated:YES completion:nil];
+	
+}
+
+
+-(void)enableTouchID {
+	
+	[self dismissViewControllerAnimated:YES completion:^{
+	
+			
+			self.dbManager = [[FitnessTrackerDB alloc] initWithDatabaseFilename:@"fitnesstrackerdb.sql"];
+			
+			NSString *query = [NSString stringWithFormat:@"UPDATE UserInfo SET useTouchID = %d WHERE username = '%@'", 1, self.username];
+			
+			// Execute the query.
+			[self.dbManager executeQuery:query];
+			
+			// If the query was successfully executed
+			if (self.dbManager.affectedRows != 0) {
+				
+				NSLog(@"Query was executed successfully. Affected rows = %d", self.dbManager.affectedRows);
+				
+				UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Use Touch ID is now enabled"
+																			   message:@"You can now use Touch ID for authentication."
+																		preferredStyle:UIAlertControllerStyleAlert];
+				
+				UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+																	  handler:^(UIAlertAction * action) {
+																		  
+																	  }];
+				
+				[alert addAction:defaultAction];
+				[self presentViewController:alert animated:YES completion:nil];
+			}
+			else{
+				NSLog(@"Could not execute the query.");
+			}
+		
+		}];
+}
+
+-(void)disableTouchID {
+	
+	[self dismissViewControllerAnimated:YES completion:^{
+		
+		self.dbManager = [[FitnessTrackerDB alloc] initWithDatabaseFilename:@"fitnesstrackerdb.sql"];
+		
+		NSString *query = [NSString stringWithFormat:@"UPDATE UserInfo SET useTouchID = %d WHERE username = '%@'", 0, self.username];
+		
+		// Execute the query.
+		[self.dbManager executeQuery:query];
+		
+		// If the query was successfully executed
+		if (self.dbManager.affectedRows != 0) {
+			
+			NSLog(@"Query was executed successfully. Affected rows = %d", self.dbManager.affectedRows);
+			
+			UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Use Touch ID is now disabled"
+																		   message:@"Use Touch ID is successfully disabled."
+																	preferredStyle:UIAlertControllerStyleAlert];
+			
+			UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+																  handler:^(UIAlertAction * action) {
+																	  
+																  }];
+			
+			[alert addAction:defaultAction];
+			[self presentViewController:alert animated:YES completion:nil];
+		}
+		else{
+			NSLog(@"Could not execute the query.");
+		}
+		
+	}];
+}
+
+-(void) showOverlayOnTask {
+	
+	UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"Please wait..." preferredStyle: UIAlertControllerStyleAlert];
+	
+	UIActivityIndicatorView *loadingIndicator = [[UIActivityIndicatorView alloc]initWithFrame: CGRectMake(10, 5, 50, 50)];
+	
+	loadingIndicator.hidesWhenStopped = YES;
+	loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+	[loadingIndicator startAnimating];
+	[alert.view addSubview:loadingIndicator];
+	[self presentViewController:alert animated:YES completion:nil];
+}
+
+
+-(void)showLoginFailed {
+	
+	[self dismissViewControllerAnimated:YES completion:^{
+		
+		UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Incorrect password"
+																	   message:@"Password is incorrect. Please try again."
+																preferredStyle:UIAlertControllerStyleAlert];
+		
+		UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+															  handler:^(UIAlertAction * action) {}];
+		
+		[alert addAction:defaultAction];
+		[self presentViewController:alert animated:YES completion:nil];
+	}];
+}
 @end
