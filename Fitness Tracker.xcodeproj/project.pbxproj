@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		E5171BE5201F78690062917E /* fitnesstrackerdb.sql in Resources */ = {isa = PBXBuildFile; fileRef = E5171BE4201F78690062917E /* fitnesstrackerdb.sql */; };
+		E5171BE8201F90C90062917E /* BMICalculator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5171BE7201F90C90062917E /* BMICalculator.storyboard */; };
+		E5171BEB201F90E40062917E /* BMICalculatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5171BEA201F90E40062917E /* BMICalculatorViewController.m */; };
+		E5171BEE201F91E10062917E /* BMICalculation.m in Sources */ = {isa = PBXBuildFile; fileRef = E5171BED201F91E10062917E /* BMICalculation.m */; };
 		E5220295201E6CC100BA0507 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5220294201E6CC100BA0507 /* SettingsTableViewController.m */; };
 		E564B905201D97C5002B9ABE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E564B904201D97C5002B9ABE /* main.m */; };
 		E564B908201D97C5002B9ABE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E564B907201D97C5002B9ABE /* AppDelegate.m */; };
@@ -32,6 +35,11 @@
 
 /* Begin PBXFileReference section */
 		E5171BE4201F78690062917E /* fitnesstrackerdb.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = fitnesstrackerdb.sql; sourceTree = "<group>"; };
+		E5171BE7201F90C90062917E /* BMICalculator.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BMICalculator.storyboard; sourceTree = "<group>"; };
+		E5171BE9201F90E40062917E /* BMICalculatorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BMICalculatorViewController.h; sourceTree = "<group>"; };
+		E5171BEA201F90E40062917E /* BMICalculatorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BMICalculatorViewController.m; sourceTree = "<group>"; };
+		E5171BEC201F91E10062917E /* BMICalculation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BMICalculation.h; sourceTree = "<group>"; };
+		E5171BED201F91E10062917E /* BMICalculation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BMICalculation.m; sourceTree = "<group>"; };
 		E5220293201E6CC100BA0507 /* SettingsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
 		E5220294201E6CC100BA0507 /* SettingsTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
 		E564B900201D97C5002B9ABE /* Fitness Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fitness Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,6 +89,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E5171BE6201F90BC0062917E /* BMI Calculator */ = {
+			isa = PBXGroup;
+			children = (
+				E5171BE7201F90C90062917E /* BMICalculator.storyboard */,
+				E5171BE9201F90E40062917E /* BMICalculatorViewController.h */,
+				E5171BEA201F90E40062917E /* BMICalculatorViewController.m */,
+				E5171BEC201F91E10062917E /* BMICalculation.h */,
+				E5171BED201F91E10062917E /* BMICalculation.m */,
+			);
+			name = "BMI Calculator";
+			sourceTree = "<group>";
+		};
 		E564B8F7201D97C5002B9ABE = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +121,7 @@
 		E564B902201D97C5002B9ABE /* Fitness Tracker */ = {
 			isa = PBXGroup;
 			children = (
+				E5171BE6201F90BC0062917E /* BMI Calculator */,
 				E5171BE4201F78690062917E /* fitnesstrackerdb.sql */,
 				E5D72984201F6E16006AA520 /* Sit-Up Tracker */,
 				E5D72983201F5D28006AA520 /* Push-Up Tracker */,
@@ -235,6 +256,7 @@
 				E564B913201D97C5002B9ABE /* LaunchScreen.storyboard in Resources */,
 				E564B910201D97C5002B9ABE /* Assets.xcassets in Resources */,
 				E58B9BA5201E4B01003639D4 /* Main.storyboard in Resources */,
+				E5171BE8201F90C90062917E /* BMICalculator.storyboard in Resources */,
 				E5D7297F201F5B2B006AA520 /* PushUpTracker.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -246,7 +268,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5171BEB201F90E40062917E /* BMICalculatorViewController.m in Sources */,
 				E5220295201E6CC100BA0507 /* SettingsTableViewController.m in Sources */,
+				E5171BEE201F91E10062917E /* BMICalculation.m in Sources */,
 				E564B908201D97C5002B9ABE /* AppDelegate.m in Sources */,
 				E594B49F201DE0C700EE0528 /* RegisterViewController.m in Sources */,
 				E5D72989201F6E4E006AA520 /* SitUpTrackerViewController.m in Sources */,

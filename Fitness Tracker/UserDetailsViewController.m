@@ -1,11 +1,3 @@
-//
-//  UserDetailsViewController.m
-//  Fitness Tracker
-//
-//  Created by Hongxuan on 29/1/18.
-//  Copyright © 2018 ITE. All rights reserved.
-//
-
 #import "UserDetailsViewController.h"
 #import "FitnessTrackerDB.h"
 
