@@ -132,12 +132,18 @@
 
 - (IBAction)btnEndWorkout:(id)sender {
 	
+	device.proximityMonitoringEnabled = NO;
+	[timer invalidate];
+	timer = nil;
+	
 	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
 	[dateFormatter setDateFormat:@"yyyy-MM-dd"];
 	NSDate *attemptDate = [NSDate date];
 	
-	NSString *query = [NSString stringWithFormat:@"INSERT INTO Workouts VALUES('%@', '%@', 'Push-Ups', '%d', '%@')", [dateFormatter stringFromDate:attemptDate], self.username, pushUpCount, self.lblTimer.text];
+	self.dbManager = [[FitnessTrackerDB alloc] initWithDatabaseFilename:@"fitnesstrackerdb.sql"];
 	
+	NSString *query = [NSString stringWithFormat:@"INSERT INTO Workouts(attemptDate, username, workout_type, result, timeTaken) VALUES('%@', '%@', 'Push-Ups', '%d', '%@')", [dateFormatter stringFromDate:attemptDate], self.username, pushUpCount, self.lblTimer.text];
+		
 	// Execute the query.
 	[self.dbManager executeQuery:query];
 	
@@ -153,7 +159,7 @@
 		UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Return to Main Menu" style:UIAlertActionStyleDefault
 															  handler:^(UIAlertAction * action) {
 																  
-																  [self.navigationController popToRootViewControllerAnimated:YES];
+																  [self returntoMainMenu];
 															  }];
 		
 		[alert addAction:defaultAction];

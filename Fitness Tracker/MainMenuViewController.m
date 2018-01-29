@@ -1,6 +1,7 @@
 #import "MainMenuViewController.h"
 #import "SettingsTableViewController.h"
 #import "PushUpTrackerViewController.h"
+#import "WorkoutHistoryTableViewController.h"
 
 @interface MainMenuViewController ()
 
@@ -29,8 +30,12 @@
 	
 	if ([[segue identifier]  isEqual: @"showSettings"]) {
 		
-		SettingsTableViewController *vc = (SettingsTableViewController *)[segue destinationViewController];
+		SettingsTableViewController *vc = [segue destinationViewController];
+		vc.username = self.username;
+	}
+	else if ([[segue identifier] isEqual:@"showWorkoutHistory"]) {
 		
+		WorkoutHistoryTableViewController *vc = [segue destinationViewController];
 		vc.username = self.username;
 	}
 }

@@ -401,7 +401,19 @@
 		
 		self.dbManager = [[FitnessTrackerDB alloc] initWithDatabaseFilename:@"fitnesstrackerdb.sql"];
 		
-		NSString *query = [NSString stringWithFormat:@"DELETE FROM UserInfo WHERE username = '%@'", self.username];
+		NSString *query = [NSString stringWithFormat:@"DELETE FROM Workouts WHERE username = '%@'", self.username];
+		
+		[self.dbManager executeQuery:query];
+		
+		if (self.dbManager.affectedRows != 0) {
+			
+			NSLog(@"Query was executed successfully. Affected rows = %d", self.dbManager.affectedRows);
+		}
+		else{
+			NSLog(@"Could not execute the query.");
+		}
+		
+		query = [NSString stringWithFormat:@"DELETE FROM UserInfo WHERE username = '%@'", self.username];
 		
 		// Execute the query.
 		[self.dbManager executeQuery:query];
