@@ -11,6 +11,10 @@
 		E5171BE8201F90C90062917E /* BMICalculator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5171BE7201F90C90062917E /* BMICalculator.storyboard */; };
 		E5171BEB201F90E40062917E /* BMICalculatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5171BEA201F90E40062917E /* BMICalculatorViewController.m */; };
 		E5171BEE201F91E10062917E /* BMICalculation.m in Sources */ = {isa = PBXBuildFile; fileRef = E5171BED201F91E10062917E /* BMICalculation.m */; };
+		E5171BF1201F97910062917E /* LocateAGym.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5171BF0201F97910062917E /* LocateAGym.storyboard */; };
+		E5171BF4201F97B00062917E /* LocateAGymViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5171BF3201F97B00062917E /* LocateAGymViewController.m */; };
+		E5171BF7201F99070062917E /* CustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E5171BF6201F99070062917E /* CustomAnnotation.m */; };
+		E5171BFA201F9C3D0062917E /* GymDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5171BF9201F9C3D0062917E /* GymDetailsViewController.m */; };
 		E5220295201E6CC100BA0507 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5220294201E6CC100BA0507 /* SettingsTableViewController.m */; };
 		E564B905201D97C5002B9ABE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E564B904201D97C5002B9ABE /* main.m */; };
 		E564B908201D97C5002B9ABE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E564B907201D97C5002B9ABE /* AppDelegate.m */; };
@@ -40,6 +44,13 @@
 		E5171BEA201F90E40062917E /* BMICalculatorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BMICalculatorViewController.m; sourceTree = "<group>"; };
 		E5171BEC201F91E10062917E /* BMICalculation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BMICalculation.h; sourceTree = "<group>"; };
 		E5171BED201F91E10062917E /* BMICalculation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BMICalculation.m; sourceTree = "<group>"; };
+		E5171BF0201F97910062917E /* LocateAGym.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LocateAGym.storyboard; sourceTree = "<group>"; };
+		E5171BF2201F97B00062917E /* LocateAGymViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocateAGymViewController.h; sourceTree = "<group>"; };
+		E5171BF3201F97B00062917E /* LocateAGymViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocateAGymViewController.m; sourceTree = "<group>"; };
+		E5171BF5201F99070062917E /* CustomAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomAnnotation.h; sourceTree = "<group>"; };
+		E5171BF6201F99070062917E /* CustomAnnotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomAnnotation.m; sourceTree = "<group>"; };
+		E5171BF8201F9C3D0062917E /* GymDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GymDetailsViewController.h; sourceTree = "<group>"; };
+		E5171BF9201F9C3D0062917E /* GymDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GymDetailsViewController.m; sourceTree = "<group>"; };
 		E5220293201E6CC100BA0507 /* SettingsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
 		E5220294201E6CC100BA0507 /* SettingsTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
 		E564B900201D97C5002B9ABE /* Fitness Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fitness Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,6 +112,20 @@
 			name = "BMI Calculator";
 			sourceTree = "<group>";
 		};
+		E5171BEF201F97780062917E /* Locate A Gym */ = {
+			isa = PBXGroup;
+			children = (
+				E5171BF0201F97910062917E /* LocateAGym.storyboard */,
+				E5171BF2201F97B00062917E /* LocateAGymViewController.h */,
+				E5171BF3201F97B00062917E /* LocateAGymViewController.m */,
+				E5171BF5201F99070062917E /* CustomAnnotation.h */,
+				E5171BF6201F99070062917E /* CustomAnnotation.m */,
+				E5171BF8201F9C3D0062917E /* GymDetailsViewController.h */,
+				E5171BF9201F9C3D0062917E /* GymDetailsViewController.m */,
+			);
+			name = "Locate A Gym";
+			sourceTree = "<group>";
+		};
 		E564B8F7201D97C5002B9ABE = {
 			isa = PBXGroup;
 			children = (
@@ -121,8 +146,9 @@
 		E564B902201D97C5002B9ABE /* Fitness Tracker */ = {
 			isa = PBXGroup;
 			children = (
-				E5171BE6201F90BC0062917E /* BMI Calculator */,
 				E5171BE4201F78690062917E /* fitnesstrackerdb.sql */,
+				E5171BEF201F97780062917E /* Locate A Gym */,
+				E5171BE6201F90BC0062917E /* BMI Calculator */,
 				E5D72984201F6E16006AA520 /* Sit-Up Tracker */,
 				E5D72983201F5D28006AA520 /* Push-Up Tracker */,
 				E5D7296F201F350D006AA520 /* UserDetailsViewController.h */,
@@ -253,6 +279,7 @@
 			files = (
 				E5171BE5201F78690062917E /* fitnesstrackerdb.sql in Resources */,
 				E5D72986201F6E2D006AA520 /* SitUpTracker.storyboard in Resources */,
+				E5171BF1201F97910062917E /* LocateAGym.storyboard in Resources */,
 				E564B913201D97C5002B9ABE /* LaunchScreen.storyboard in Resources */,
 				E564B910201D97C5002B9ABE /* Assets.xcassets in Resources */,
 				E58B9BA5201E4B01003639D4 /* Main.storyboard in Resources */,
@@ -272,10 +299,13 @@
 				E5220295201E6CC100BA0507 /* SettingsTableViewController.m in Sources */,
 				E5171BEE201F91E10062917E /* BMICalculation.m in Sources */,
 				E564B908201D97C5002B9ABE /* AppDelegate.m in Sources */,
+				E5171BF4201F97B00062917E /* LocateAGymViewController.m in Sources */,
 				E594B49F201DE0C700EE0528 /* RegisterViewController.m in Sources */,
+				E5171BFA201F9C3D0062917E /* GymDetailsViewController.m in Sources */,
 				E5D72989201F6E4E006AA520 /* SitUpTrackerViewController.m in Sources */,
 				E564B905201D97C5002B9ABE /* main.m in Sources */,
 				E5D7295F201EEB04006AA520 /* MainMenuViewController.m in Sources */,
+				E5171BF7201F99070062917E /* CustomAnnotation.m in Sources */,
 				E594B492201DA0C200EE0528 /* LoginViewController.m in Sources */,
 				E594B495201DA1DB00EE0528 /* FitnessTrackerDB.m in Sources */,
 				E5D7298F201F717F006AA520 /* WorkoutHistoryTableViewCell.m in Sources */,

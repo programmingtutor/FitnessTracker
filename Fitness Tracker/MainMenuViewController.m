@@ -4,6 +4,7 @@
 #import "WorkoutHistoryTableViewController.h"
 #import "SitUpTrackerViewController.h"
 #import "BMICalculatorViewController.h"
+#import "LocateAGymViewController.h"
 
 @interface MainMenuViewController ()
 
@@ -67,6 +68,16 @@
 	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"BMICalculator" bundle:nil];
 	UINavigationController *navigationController = [storyboard instantiateViewControllerWithIdentifier:@"bmiCalculator"];
 	BMICalculatorViewController *vc = navigationController.viewControllers[0];
+	vc.username = self.username;
+	navigationController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+	[self presentViewController:navigationController animated:YES completion:nil];
+}
+
+- (IBAction)btnLocateAGym:(id)sender {
+	
+	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"LocateAGym" bundle:nil];
+	UINavigationController *navigationController = [storyboard instantiateViewControllerWithIdentifier:@"locateAGym"];
+	LocateAGymViewController *vc = navigationController.viewControllers[0];
 	vc.username = self.username;
 	navigationController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
 	[self presentViewController:navigationController animated:YES completion:nil];
