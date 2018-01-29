@@ -1,6 +1,7 @@
 #import "SettingsTableViewController.h"
 #import "FitnessTrackerDB.h"
 #import "LoginViewController.h"
+#import "ChangePasswordViewController.h"
 
 
 @interface SettingsTableViewController ()
@@ -8,6 +9,7 @@
 @property (nonatomic, strong) FitnessTrackerDB *dbManager;
 @property (nonatomic, strong) NSArray *arrUserInfo;
 -(void)showLoginFailed;
+-(void)deleteAccount;
 
 @end
 
@@ -99,6 +101,16 @@
 		
 		[self presentViewController:controller animated:YES completion:nil];
 	}
+	//Change Password
+	else if (indexPath.row == 1 && indexPath.section == 1) {
+		
+		[self performSegueWithIdentifier:@"changePassword" sender:self];
+	}
+	//Delete Account
+	else if (indexPath.row == 2 && indexPath.section == 1) {
+		
+		[self deleteAccountPrompt];
+	}
 	
 	
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -148,15 +160,21 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+	
+	if ([[segue identifier]  isEqual: @"changePassword"]) {
+		
+		ChangePasswordViewController *vc = (ChangePasswordViewController *)[segue destinationViewController];
+		vc.username = self.username;
+	}
 }
-*/
+
 
 -(void)setTouchIDStateOff {
 	
@@ -308,6 +326,87 @@
 		
 		[alert addAction:defaultAction];
 		[self presentViewController:alert animated:YES completion:nil];
+	}];
+}
+
+-(void)deleteAccountPrompt {
+	
+	UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Delete Account" message:@"All data in this account will be deleted. Are you sure?" preferredStyle:UIAlertControllerStyleAlert];
+	
+	//OK ACTION
+	[controller addAction:[UIAlertAction actionWithTitle:@"Confirm" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+		
+		//Enter Password
+		UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Enter Password" message:@"Please enter your password to confirm deletion of account." preferredStyle:UIAlertControllerStyleAlert];
+		
+		[alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+			textField.placeholder = @"Password";
+			textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+			textField.secureTextEntry = YES;
+		}];
+		
+		[alert addAction:[UIAlertAction actionWithTitle:@"Delete Account" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+			NSArray * textfields = alert.textFields;
+			UITextField *password = textfields[0];
+			
+			self.dbManager = [[FitnessTrackerDB alloc] initWithDatabaseFilename:@"fitnesstrackerdb.sql"];
+			
+			NSString *query = [NSString stringWithFormat:@"SELECT * FROM UserInfo WHERE username = '%@' AND password = '%@'", self.username, password.text];
+			
+			// Get the results.
+			if (self.arrUserInfo != nil) {
+				self.arrUserInfo = nil;
+			}
+			self.arrUserInfo = [[NSArray alloc] initWithArray:[self.dbManager loadDataFromDB:query]];
+			
+			if ([self.arrUserInfo count] != 0) {
+				
+				//Delete account
+				[self showOverlayOnTask];
+				[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(deleteAccount) userInfo:nil repeats:NO];
+			}
+			else {
+				
+				//Wrong password
+				[self showOverlayOnTask];
+				[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(showLoginFailed) userInfo:nil repeats:NO];
+			}
+			
+		}]];
+		
+		[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+		}]];
+		
+		[self presentViewController:alert animated:YES completion:nil];
+	}]];
+	
+	[controller addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+	[self presentViewController:controller animated:YES completion:nil];
+}
+
+-(void)deleteAccount {
+	
+	[self dismissViewControllerAnimated:YES completion:^{
+		
+		self.dbManager = [[FitnessTrackerDB alloc] initWithDatabaseFilename:@"fitnesstrackerdb.sql"];
+		
+		NSString *query = [NSString stringWithFormat:@"DELETE FROM UserInfo WHERE username = '%@'", self.username];
+		
+		// Execute the query.
+		[self.dbManager executeQuery:query];
+		
+		// If the query was successfully executed
+		if (self.dbManager.affectedRows != 0) {
+			
+			NSLog(@"Query was executed successfully. Affected rows = %d", self.dbManager.affectedRows);
+			//Go back to login menu
+			UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+			LoginViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"loginMenu"];
+			[self presentViewController:vc animated:YES completion:nil];
+		}
+		else{
+			NSLog(@"Could not execute the query.");
+		}
 	}];
 }
 @end
