@@ -195,7 +195,7 @@ calloutAccessoryControlTapped:(UIControl *)control
 			// Because this is an iOS app, add the detail disclosure button to display details about the annotation in another view.
 			UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
 			
-			//action is nil because the selector mapView:annotationView:calloutAccessoryControlTapped is being called twice.
+			//action is nil because the selector mapView:annotationView:calloutAccessoryControlTapped is being called twice. Safe to ignore
 			//Warning message states that action cannot be nil however.
 			[rightButton addTarget:nil action:nil forControlEvents:UIControlEventTouchUpInside];
 			

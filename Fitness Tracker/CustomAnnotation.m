@@ -21,6 +21,8 @@
 
 + (NSMutableArray *)GetAllAnnotations
 {
+	
+	//This method puts all ActiveSG Gyms to pin annotations
 	NSMutableArray *AllAnnotations = [[NSMutableArray alloc]init];
 	
 	[AllAnnotations addObject:[[CustomAnnotation alloc]initWithLocation:CLLocationCoordinate2DMake(1.3553, 103.8508) title:@"Bishan ActiveSG Gym" andSubtitle:@"5 Bishan Street 14"]];
