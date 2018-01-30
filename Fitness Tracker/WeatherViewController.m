@@ -1,11 +1,3 @@
-//
-//  WeatherViewController.m
-//  Fitness Tracker
-//
-//  Created by Hongxuan on 30/1/18.
-//  Copyright © 2018 ITE. All rights reserved.
-//
-
 #import "WeatherViewController.h"
 
 @interface WeatherViewController ()

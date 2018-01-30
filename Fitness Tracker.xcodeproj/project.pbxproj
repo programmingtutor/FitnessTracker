@@ -108,6 +108,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E513B7F82020750A0073F8B6 /* Weather Forecast */ = {
+			isa = PBXGroup;
+			children = (
+				E513B7F520205D150073F8B6 /* WeatherViewController.h */,
+				E513B7F620205D150073F8B6 /* WeatherViewController.m */,
+			);
+			name = "Weather Forecast";
+			sourceTree = "<group>";
+		};
 		E5171BE6201F90BC0062917E /* BMI Calculator */ = {
 			isa = PBXGroup;
 			children = (
@@ -155,8 +164,6 @@
 		E5171BFD201FA21F0062917E /* Main Menu */ = {
 			isa = PBXGroup;
 			children = (
-				E513B7F520205D150073F8B6 /* WeatherViewController.h */,
-				E513B7F620205D150073F8B6 /* WeatherViewController.m */,
 				E5D7295D201EEB04006AA520 /* MainMenuViewController.h */,
 				E5D7295E201EEB04006AA520 /* MainMenuViewController.m */,
 			);
@@ -236,6 +243,7 @@
 		E564B902201D97C5002B9ABE /* Fitness Tracker */ = {
 			isa = PBXGroup;
 			children = (
+				E513B7F82020750A0073F8B6 /* Weather Forecast */,
 				E5171C02201FB3DB0062917E /* 2.4KM Tracker */,
 				E5171C01201FA29D0062917E /* Fitness Tracker Database */,
 				E5171C00201FA2860062917E /* Workout History */,
