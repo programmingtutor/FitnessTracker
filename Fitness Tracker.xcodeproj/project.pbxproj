@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E513B7F720205D150073F8B6 /* WeatherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E513B7F620205D150073F8B6 /* WeatherViewController.m */; };
 		E5171BE5201F78690062917E /* fitnesstrackerdb.sql in Resources */ = {isa = PBXBuildFile; fileRef = E5171BE4201F78690062917E /* fitnesstrackerdb.sql */; };
 		E5171BE8201F90C90062917E /* BMICalculator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5171BE7201F90C90062917E /* BMICalculator.storyboard */; };
 		E5171BEB201F90E40062917E /* BMICalculatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5171BEA201F90E40062917E /* BMICalculatorViewController.m */; };
@@ -40,6 +41,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E513B7F520205D150073F8B6 /* WeatherViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherViewController.h; sourceTree = "<group>"; };
+		E513B7F620205D150073F8B6 /* WeatherViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherViewController.m; sourceTree = "<group>"; };
 		E5171BE4201F78690062917E /* fitnesstrackerdb.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = fitnesstrackerdb.sql; sourceTree = "<group>"; };
 		E5171BE7201F90C90062917E /* BMICalculator.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BMICalculator.storyboard; sourceTree = "<group>"; };
 		E5171BE9201F90E40062917E /* BMICalculatorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BMICalculatorViewController.h; sourceTree = "<group>"; };
@@ -152,6 +155,8 @@
 		E5171BFD201FA21F0062917E /* Main Menu */ = {
 			isa = PBXGroup;
 			children = (
+				E513B7F520205D150073F8B6 /* WeatherViewController.h */,
+				E513B7F620205D150073F8B6 /* WeatherViewController.m */,
 				E5D7295D201EEB04006AA520 /* MainMenuViewController.h */,
 				E5D7295E201EEB04006AA520 /* MainMenuViewController.m */,
 			);
@@ -384,6 +389,7 @@
 				E594B495201DA1DB00EE0528 /* FitnessTrackerDB.m in Sources */,
 				E5D7298F201F717F006AA520 /* WorkoutHistoryTableViewCell.m in Sources */,
 				E5D7298C201F716D006AA520 /* WorkoutHistoryTableViewController.m in Sources */,
+				E513B7F720205D150073F8B6 /* WeatherViewController.m in Sources */,
 				E5D7296E201F258D006AA520 /* ChangePasswordViewController.m in Sources */,
 				E5D72982201F5D1D006AA520 /* PushUpTrackerViewController.m in Sources */,
 				E5D72971201F350D006AA520 /* UserDetailsViewController.m in Sources */,
